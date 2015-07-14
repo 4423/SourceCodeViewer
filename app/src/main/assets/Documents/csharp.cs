@@ -3,48 +3,17 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace foobar4423
+namespace SourceCodeViewer
 {
-    public static class Utility
+    public class Hello
     {
         /// <summary>
-        /// foobarのウィンドウタイトルを取得します。
+        /// 表示例です。
         /// </summary>
-        /// <returns></returns>
-        public static string FoobarWindowTitle(string filePath, string processName = "foobar2000")
+        static void Main()
         {
-            return Process.GetProcessesByName(processName)
-                          .Where(p => p.MainModule.FileName == filePath)
-                          .Select(p => p.MainWindowTitle)
-                          .SingleOrDefault();
-        }
-
-
-        /// <summary>
-        /// 連続する半角空白文字を一つの空白文字に集約します。
-        /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
-        public static string RemoveContinuousWhiteSpace(string str)
-        {
-            int whitePos = 0;
-            while ((whitePos = str.IndexOf("  ")) != -1)
-            {
-                str = str.Replace("  ", " ");
-            }
-            return str;
-        }
-
-
-        /// <summary>
-        /// この文字列に、指定された文字列が存在するかどうかを返します。
-        /// </summary>
-        /// <param name="target"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        static public bool IsFind(this string target, string value)
-        {
-            return target.IndexOf(value) != -1;
+            //エクスプローラー等からファイルをSourceCodeViewerで開くことが出来ます。
+            System.Console.WriteLine("This is test file.");
         }
     }
 }

@@ -2,6 +2,8 @@ package com.lab4423.sourcecodeviewer;
 
 import android.content.res.Resources;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -16,6 +18,10 @@ public class ResourceFile {
         this.inputStream = resources.getAssets().open(path);
     }
 
+    public ResourceFile(File file) throws IOException{
+        this.path = file.getPath();
+        this.inputStream = new FileInputStream(file);
+    }
 
     public String getPath() {
         return path;

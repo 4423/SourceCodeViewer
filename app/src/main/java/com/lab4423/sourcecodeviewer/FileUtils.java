@@ -1,16 +1,20 @@
 package com.lab4423.sourcecodeviewer;
 
 import java.io.BufferedReader;
-import java.io.FileOutputStream;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 
 public class FileUtils {
 
     public static String readAll(InputStream src) throws IOException {
         return readAllCore(new BufferedReader(new InputStreamReader(src)));
+    }
+
+    public static String readAll(File src) throws IOException {
+        return readAllCore(new BufferedReader(new FileReader(src)));
     }
 
     private static String readAllCore(BufferedReader br) throws IOException{
@@ -25,11 +29,6 @@ public class FileUtils {
         finally {
             br.close();
         }
-    }
-
-    public static void write(String str, ResourceFile dest) throws IOException {
-        OutputStream fos = new FileOutputStream(dest.getPath());
-        fos.write(str.getBytes());
     }
 
     public static String getExtension(String file) {
