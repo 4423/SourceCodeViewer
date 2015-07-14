@@ -10,6 +10,10 @@ public class PageBuilder {
     private ResourceFile template;
     private String style = "shThemeDefault.css";
 
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
 
     public PageBuilder(Packet packet, ResourceFile template) {
         if(packet == null) {
@@ -37,23 +41,5 @@ public class PageBuilder {
             Log.v("", "ファイルアクセスに失敗しました。");
             return null;
         }
-    }
-
-
-    /**
-     * HTMLファイルをAndroid上に書き込みます。
-     * @param dest 書き込み先を示すFile
-     */
-    public void create(ResourceFile dest) {
-        try {
-            FileUtils.write(build(), dest);
-        }
-        catch (IOException ex) {
-            Log.v("", "HTMLの書き込みに失敗しました。");
-        }
-    }
-
-    public void setStyle(String style) {
-        this.style = style;
     }
 }

@@ -11,6 +11,8 @@ import java.io.IOException;
 
 public class MainActivity extends ActionBarActivity {
 
+    private WebView webView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +50,8 @@ public class MainActivity extends ActionBarActivity {
         Packet packet = new Packet(src, new Brush(FileUtils.getExtension(src)));
         PageBuilder pb = new PageBuilder(packet, template);
 
-        WebView webView = (WebView)findViewById(R.id.webView);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadDataWithBaseURL("file:///android_asset/", pb.build(), "text/html", "UTF-8", null);
+        this.webView = (WebView)this.findViewById(R.id.webView);
+        this.webView.getSettings().setJavaScriptEnabled(true);
+        this.webView.loadDataWithBaseURL("file:///android_asset/", pb.build(), "text/html", "UTF-8", null);
     }
 }
